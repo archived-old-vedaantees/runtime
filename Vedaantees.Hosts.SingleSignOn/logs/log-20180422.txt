@@ -1,0 +1,13 @@
+2018-04-22 07:38:04.454 +05:30 [Information] "vedaantees-single-sign-on" - Document Session Factory 1
+2018-04-22 07:38:06.425 +05:30 [Information] "vedaantees-single-sign-on" - Added Master to session
+2018-04-22 07:38:07.927 +05:30 [Information] Initializing RabbitMQ connection manager for transport with input queue '"vedaantees-single-sign-on"'
+2018-04-22 07:38:08.201 +05:30 [Information] Creating directory "d:\deployments\shared-files"
+2018-04-22 07:38:08.201 +05:30 [Information] Checking that the current process has read/write access to directory "d:\deployments\shared-files"
+2018-04-22 07:38:08.209 +05:30 [Information] Starting periodic task "CleanupTrackedErrors" with interval 00:01:00
+2018-04-22 07:38:08.219 +05:30 [Information] Starting bus 1
+2018-04-22 07:38:08.221 +05:30 [Information] Setting number of workers to 2
+2018-04-22 07:38:08.227 +05:30 [Information] Started
+2018-04-22 07:38:08.255 +05:30 [Information] Successfully initialized consumer for "vedaantees-single-sign-on"
+2018-04-22 07:38:08.507 +05:30 [Information] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2018-04-22 07:38:08.882 +05:30 [Information] Request starting HTTP/1.1 GET http://localhost:51943/  
+2018-04-22 07:38:09.037 +05:30 [Information] Request finished in 159.6754ms 404 

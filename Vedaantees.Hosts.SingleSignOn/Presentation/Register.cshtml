@@ -1,0 +1,146 @@
+﻿@model Vedaantees.Hosts.SingleSignOn.Presentation.Models.RegisterViewModel
+
+<form asp-controller="Account" asp-action="Register" method="post" name="registerForm">
+    <v-form v-model="valid">
+        <v-card raised hover class="pa-4" id="form-card">
+            <v-card-text>
+                <h4 class="display-1">
+                    <v-avatar class="orange darken-3  mr-1">
+                        <v-icon dark large>lock</v-icon>
+                    </v-avatar>
+                    Register Me
+                </h4>
+                <v-container grid-list-md>
+                    <v-layout row wrap>
+                        @if (ViewContext.ViewData.ModelState.ErrorCount != 0)
+                        {
+                            <v-alert color="error" icon="warning" value="true" class="mt-4 mb-4">
+                                @string.Join("", ViewContext.ViewData.ModelState.Values.SelectMany(p => p.Errors).Select(p => $" {p.ErrorMessage}"))
+                            </v-alert>
+                        }
+                        <v-flex xs12>
+                            <v-text-field name="username"
+                                          label="Username"
+                                          v-model="username"
+                                          v-bind:rules="requiredRules"
+                                          hint="You can optionally use mobile no. or email or username to login"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md6>
+                            <v-text-field label="Password"
+                                          name="password"
+                                          v-model="password"
+                                          v-bind:rules="requiredRules"
+                                          hint="Passwords are case-sensitive"
+                                          v-bind:append-icon="isHidden ? 'visibility' : 'visibility_off'"
+                                          v-bind:append-icon-cb="() => (isHidden = !isHidden)"
+                                          v-bind:type="isHidden ? 'password' : 'text'"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md6>
+                            <v-text-field label="Retype Password"
+                                          v-model="retypePassword"
+                                          v-bind:error-messages="retypeErrors"
+                                          hint="Must be same as Password"
+                                          v-bind:append-icon="isHidden ? 'visibility' : 'visibility_off'"
+                                          v-bind:append-icon-cb="() => (isHidden = !isHidden)"
+                                          v-bind:type="isHidden ? 'password' : 'text'"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                        <v-flex xs12>
+                            <v-text-field name="email"
+                                          v-model="email"
+                                          label="Email"
+                                          v-bind:rules="emailRules"
+                                          hint="A confirmation email will be sent to this email-id"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md6>
+                            <v-text-field name="firstname"
+                                          v-model="firstName"
+                                          label="Firstname"
+                                          v-bind:rules="nameRules"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                        <v-flex xs12 md6>
+                            <v-text-field name="lastname"
+                                          v-model="lastName"
+                                          label="Lastname"
+                                          v-bind:rules="nameRules"
+                                          required>
+                            </v-text-field>
+                        </v-flex>
+                    </v-layout>
+                </v-container>
+            </v-card-text>
+            <v-card-actions>
+                <v-btn flat primary href="@Model.LoginUrl">Login</v-btn> | <v-btn flat primary href="@Url.Action("ResetPassword","Account")">Reset Password</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn class="primary" v-on:click="submit" v-bind:disabled="!valid">Register Me</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-form>
+
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" name="email" />
+    <input type="hidden" name="firstname" />
+    <input type="hidden" name="lastname" />
+    <input type="hidden" asp-for="LoginUrl" />
+</form>
+@section scripts
+{
+    <script>
+        new Vue({
+            el: 'v-app',
+            data: {
+                        valid: false,
+                        isHidden: true,
+                        username:"",
+                        password: "",
+                        retypePassword: "",
+                        firstName: "",
+                        lastName: "",
+                        email:"",
+                        requiredRules: [(v) => !!v || 'required'],
+                        emailRules: [
+                                        (v) => !!v || 'E-mail is required',
+                                        (v) => /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+                                    ],
+                        nameRules: [(v) => !!v || 'required']
+            },
+            methods: {
+                submit: function () {
+
+                    window.document.getElementById("preloader").style.display = "flex";
+                    document.registerForm["username"].value = this.username;
+                    document.registerForm["password"].value = this.password;
+                    document.registerForm["email"].value = this.email;
+                    document.registerForm["firstname"].value = this.firstName;
+                    document.registerForm["lastname"].value = this.lastName;
+                    document.registerForm.submit();
+
+                }
+            },
+            computed: {
+                retypeErrors: function () {
+
+                    const errors = [];
+                    if (this.retypePassword !== this.password)
+                       errors.push('Password and Retype-Password must be the same.');
+
+                    return errors;
+                }
+            },
+            mounted() {
+
+                window.document.getElementById("preloader").style.display = "none";
+            }
+        });
+    </script>
+}

@@ -1,0 +1,84 @@
+﻿@model Vedaantees.Hosts.SingleSignOn.Presentation.Models.LoginViewModel
+@{ 
+    var loginUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}";
+}
+
+<form asp-controller="Account" asp-action="Login" method="post" name="loginForm">
+    <v-form v-model="valid">    
+        <v-card raised hover class="pa-4" id="form-card">
+            <v-card-text>
+                <h4 class="display-1">
+                    <v-avatar class="mr-1">
+                        <v-icon large color="primary">lock</v-icon>
+                    </v-avatar>
+                    Login
+                </h4>
+                @if (ViewContext.ViewData.ModelState.ErrorCount != 0)
+                {
+                    <v-alert color="error" icon="warning" value="true" class="mt-4 mb-4">
+                        @string.Join("", ViewContext.ViewData.ModelState.Values.SelectMany(p => p.Errors).Select(p => $" {p.ErrorMessage}"))
+                    </v-alert>
+                }
+                <v-text-field name="username"
+                              label="Username"
+                              v-model="username"
+                              v-bind:rules="requiredRules"
+                              hint="You can optionally use mobile no. or email or username to login"
+                              class="mb-4"
+                              required>
+                </v-text-field>
+                <v-text-field label="Password"
+                              hint="Passwords are case-sensitive"
+                              name="password"
+                              v-model="password"
+                              v-bind:rules="requiredRules"
+                              v-bind:append-icon="isHidden ? 'visibility' : 'visibility_off'"
+                              v-bind:append-icon-cb="() => (isHidden = !isHidden)"
+                              v-bind:type="isHidden ? 'password' : 'text'"
+                              class="mb-4"
+                              required>
+                </v-text-field>
+                <v-checkbox label="Remember Me" name="remember" class="mb-5" v-model="rememberMe"></v-checkbox>
+            </v-card-text>
+            <v-card-actions>
+                <v-btn flat primary href="@Url.Action("Register","Account")?loginUrl=@Html.UrlEncoder.Encode(loginUrl)">Register Me</v-btn> | <v-btn flat primary href="@Url.Action("ResetPassword","Account")?loginUrl=@Html.UrlEncoder.Encode(loginUrl)">Reset Password</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn class="primary" v-on:click="submit" v-bind:disabled="!valid">Login</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-form>
+    <input type="hidden" name="rememberMe"/>
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" asp-for="ReturnUrl"/>
+</form>
+@section scripts
+{
+    <script>
+        new Vue({
+            el: 'v-app',
+            data: {
+                isHidden: true,
+                valid: false,
+                rememberMe: false,
+                username: "",
+                password: "",
+                requiredRules: [(v) => !!v || 'required'],
+            },
+            methods: {
+                submit: function() {
+
+                    window.document.getElementById("preloader").style.display = "flex";
+                    document.loginForm["username"].value = this.username;
+                    document.loginForm["password"].value = this.password;
+                    document.loginForm["rememberMe"].value = this.rememberMe;
+                    document.loginForm.submit();
+                }
+            },
+            mounted() {
+                    
+                window.document.getElementById("preloader").style.display = "none";
+            }
+        });
+    </script>
+}

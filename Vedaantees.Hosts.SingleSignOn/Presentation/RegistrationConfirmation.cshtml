@@ -1,0 +1,25 @@
+﻿<form asp-controller="Account" asp-action="Login" method="post">
+    <v-card raised hover class="pa-4" id="form-card">
+        <v-card-text class="text-xs-center">
+            <h3>Last Step.</h3>
+            <h5 class="mb-5">We need to verify your email, to complete registration. We have sent you an email on email-Id you just entered. Please follow steps sent to complete registration</h5>
+            <v-btn class="primary" href="http://wwww.worknotes.live"><v-icon class="mr-2">home</v-icon> Take me Home</v-btn>
+        </v-card-text>
+    </v-card>
+</form>
+@section scripts
+    {
+    <script>
+        new Vue({
+            el: 'v-app',
+            data: {
+                
+            },
+            mounted() {
+                
+                window.document.getElementById("preloader").style.display = "none";
+            }
+        });
+    </script>
+}
+
