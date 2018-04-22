@@ -9,6 +9,7 @@
     <PackageReference Include="Hangfire.AspNetCore" Version="1.6.19" />
     <PackageReference Include="Hangfire.PostgreSql" Version="1.4.8.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.1" />
     <PackageReference Include="Vedaantees.Framework.Providers" Version="1.0.2" />
   </ItemGroup>
 
