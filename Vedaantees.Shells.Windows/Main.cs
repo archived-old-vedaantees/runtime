@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -11,7 +12,7 @@ namespace Vedaantees.Shells.Windows
     public partial class Main : Form
     {
         private MonitorFileSystem _directoryMonitor;
-
+        private ShellConfiguration _shellConfiguration;
         public Main()
         {
             InitializeComponent();
@@ -32,19 +33,20 @@ namespace Vedaantees.Shells.Windows
             TaskProgress.MarqueeAnimationSpeed = 30;
 
             await Task.Run(() => new ShellConfiguration
-                           {
-                                ModulesFolder           = ConfigurationManager.AppSettings.Get("modules-folder"),
-                                RuntimeDeploymentFolder = ConfigurationManager.AppSettings.Get("runtime-deployment-folder"),
-                                HostApi                 = ConfigurationManager.AppSettings.Get("host-api-file"),
-                                SsoApi                  = ConfigurationManager.AppSettings.Get("sso-api-file"),
-                                FunctionsApi            = ConfigurationManager.AppSettings.Get("functions-api-file"),
-                                TasksApi                = ConfigurationManager.AppSettings.Get("tasks-api-file")
-                           })
+                       {
+                            ModulesFolder           = ConfigurationManager.AppSettings.Get("modules-folder"),
+                            RuntimeDeploymentFolder = ConfigurationManager.AppSettings.Get("runtime-deployment-folder"),
+                            HostApi                 = ConfigurationManager.AppSettings.Get("host-api-file"),
+                            SsoApi                  = ConfigurationManager.AppSettings.Get("sso-api-file"),
+                            FunctionsApi            = ConfigurationManager.AppSettings.Get("functions-api-file"),
+                            TasksApi                = ConfigurationManager.AppSettings.Get("tasks-api-file")
+                       })
                       .ContinueWith(taskConfigurationResult => 
-                            {
-                                var shellConfiguration = taskConfigurationResult.Result;
-                                _directoryMonitor = new MonitorFileSystem(shellConfiguration.RuntimeDeploymentFolder, StartOrRestartServer);
-                            });
+                       {
+                            _shellConfiguration = taskConfigurationResult.Result;
+                            _directoryMonitor = new MonitorFileSystem(_shellConfiguration.RuntimeDeploymentFolder, StartOrRestartServer);
+                       })
+                      .ContinueWith(result=> StartOrRestartServer());
 
             TaskProgress.MarqueeAnimationSpeed = 0;
         }
@@ -54,8 +56,36 @@ namespace Vedaantees.Shells.Windows
             Kill("dotnet");
             Thread.Sleep(1000);
 
-            foreach (var file in Directory.GetFiles(DeploymentFolder))
-                File.Copy(file, Path.Combine(ModulesFolder, Path.GetFileName(file)), true);
+            foreach (var file in Directory.GetFiles(_shellConfiguration.RuntimeDeploymentFolder))
+                File.Copy(file, Path.Combine(_shellConfiguration.ModulesFolder, Path.GetFileName(file)), true);
+            
+            var servers = new List<string>
+                            {
+                                _shellConfiguration.SsoApi,
+                                _shellConfiguration.FunctionsApi,
+                                _shellConfiguration.TasksApi,
+                                _shellConfiguration.HostApi
+                            };
+
+            foreach (var server in servers)
+            {
+                if (string.IsNullOrEmpty(server)) continue;
+
+                var p = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = $@"/C dotnet {server} -v",
+                        Verb = "runas",
+                        LoadUserProfile = true,
+                        UseShellExecute = true,
+                        WindowStyle = ProcessWindowStyle.Minimized,
+                        WorkingDirectory = new FileInfo(server).DirectoryName
+                    }
+                };
+                p.Start();
+            }
         }
 
         private static void Kill(string name)

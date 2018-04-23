@@ -41,6 +41,7 @@ namespace Vedaantees.Hosts.ServiceBus
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+
         }
     }
 
@@ -49,8 +50,7 @@ namespace Vedaantees.Hosts.ServiceBus
     {
         internal static void Main(string[] args)
         {
-            var hostProgram = new HostProgram("http://localhost:6004");
-            hostProgram.Main<Startup>();
+            new HostProgram("http://localhost:6004").Main<Startup>();
         }
     }
     #endregion
