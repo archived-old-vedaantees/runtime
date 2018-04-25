@@ -39,10 +39,10 @@ namespace Vedaantees.Hosts.Api
 
             services.AddMvcCore(config => {
                 //Enable this for security.
-                var policy = new AuthorizationPolicyBuilder()
-                                .RequireAuthenticatedUser()
-                                .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
+                //var policy = new AuthorizationPolicyBuilder()
+                //                .RequireAuthenticatedUser()
+                //                .Build();
+                //config.Filters.Add(new AuthorizeFilter(policy));
             })
                     .AddAuthorization()
                     .AddJsonFormatters();

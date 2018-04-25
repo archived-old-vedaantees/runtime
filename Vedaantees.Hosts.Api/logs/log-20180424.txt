@@ -1,0 +1,2 @@
+2018-04-24 17:21:35.302 +05:30 [Information] "Vedaantees-Api" - Document Session Factory 1
+2018-04-24 17:22:10.812 +05:30 [Information] "Vedaantees-Api" - Document Session Factory 1

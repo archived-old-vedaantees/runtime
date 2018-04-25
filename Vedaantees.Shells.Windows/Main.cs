@@ -54,7 +54,6 @@ namespace Vedaantees.Shells.Windows
         public void StartOrRestartServer()
         {
             Kill("dotnet");
-            Thread.Sleep(1000);
 
             foreach (var file in Directory.GetFiles(_shellConfiguration.RuntimeDeploymentFolder))
                 File.Copy(file, Path.Combine(_shellConfiguration.ModulesFolder, Path.GetFileName(file)), true);
@@ -71,6 +70,7 @@ namespace Vedaantees.Shells.Windows
             {
                 if (string.IsNullOrEmpty(server)) continue;
 
+                Thread.Sleep(700);
                 var p = new Process
                 {
                     StartInfo =
@@ -85,6 +85,7 @@ namespace Vedaantees.Shells.Windows
                     }
                 };
                 p.Start();
+                
             }
         }
 
