@@ -1,4 +1,4 @@
-﻿namespace Vedaantees.Shells.Windows
+﻿namespace Vedaantees.Shells.Windows.Editors
 {
     partial class GlobalSettingsEditor
     {

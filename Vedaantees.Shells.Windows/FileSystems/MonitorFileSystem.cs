@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading;
 
-namespace Vedaantees.Shells.Windows
+namespace Vedaantees.Shells.Windows.FileSystems
 {
     public class MonitorFileSystem
     {

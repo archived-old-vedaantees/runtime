@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vedaantees.Shells.Windows.Editors;
+using Vedaantees.Shells.Windows.Extensions;
 using Vedaantees.Shells.Windows.Messages;
 using Vedaantees.Shells.Windows.Messaging;
 

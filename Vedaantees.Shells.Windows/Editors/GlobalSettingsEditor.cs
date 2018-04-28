@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using Vedaantees.Framework.Configurations;
 
-namespace Vedaantees.Shells.Windows
+namespace Vedaantees.Shells.Windows.Editors
 {
     public partial class GlobalSettingsEditor : Form
     {

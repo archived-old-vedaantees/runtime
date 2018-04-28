@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Vedaantees.Shells.Windows.Configurations;
+using Vedaantees.Shells.Windows.FileSystems;
 using Vedaantees.Shells.Windows.Messages;
 using Vedaantees.Shells.Windows.Messaging;
 

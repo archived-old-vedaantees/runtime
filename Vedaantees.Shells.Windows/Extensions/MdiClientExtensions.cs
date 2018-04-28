@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace Vedaantees.Shells.Windows
+namespace Vedaantees.Shells.Windows.Extensions
 {
     public static class MdiClientExtensions
     {
