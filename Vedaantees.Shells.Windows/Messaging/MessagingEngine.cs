@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Vedaantees.Framework.Utilities;
 using Type = System.Type;
 
@@ -41,15 +40,5 @@ namespace Vedaantees.Shells.Windows.Messaging
                                                             handler.Execute(message);
                                                    });
         }
-    }
-
-    public interface ISubscriber
-    {
-
-    }
-
-    public interface ISubscriber<TMessage> : ISubscriber
-    {
-        void Execute(TMessage message);
     }
 }

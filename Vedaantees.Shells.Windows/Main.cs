@@ -12,7 +12,8 @@ namespace Vedaantees.Shells.Windows
 {   
     public partial class Main : Form, 
                                 ISubscriber<AppBusyStart>,
-                                ISubscriber<AppBusyEnd>
+                                ISubscriber<AppBusyEnd>,
+                                ISubscriber<RestartServer>
     {
         private readonly MainFormService _mainFormService;
         
@@ -20,17 +21,19 @@ namespace Vedaantees.Shells.Windows
         {
             _marker = 0;
             _mainFormService = new MainFormService();
+            MessagingEngine.Subscribe(this);
+
             InitializeComponent();
             var mdiClient = Controls.OfType<MdiClient>().First();
             mdiClient.BackColor = Color.WhiteSmoke;
             this.SetBevel(false);
-            
         }
         
         private async void Main_Load(object sender, EventArgs e)
         {
-            await Task.Run(() => { MessagingEngine.Subscribe(this); })
-                      .ContinueWith(result => { _mainFormService.LoadFileMonitor(); });
+            MessagingEngine.SendMessage(new AppBusyStart());
+            await Task.Run(() => { _mainFormService.LoadFileMonitor(); });
+            MessagingEngine.SendMessage(new AppBusyEnd());
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -40,7 +43,7 @@ namespace Vedaantees.Shells.Windows
         
         private void BtnRestart_Click(object sender, EventArgs e)
         {
-            _mainFormService.StartOrRestartServer();
+            MessagingEngine.SendMessage(new RestartServer());
         }
 
         private void GlobalSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,6 +72,14 @@ namespace Vedaantees.Shells.Windows
         private void BtnKill_Click(object sender, EventArgs e)
         {
             _mainFormService.StopServers();
+        }
+
+        public async void Execute(RestartServer message)
+        {
+            MessagingEngine.SendMessage(new AppBusyStart());
+            await Task.Run(() => { _mainFormService.StartOrRestartServer(); });
+            MessagingEngine.SendMessage(new AppBusyEnd());
+
         }
     }
 }

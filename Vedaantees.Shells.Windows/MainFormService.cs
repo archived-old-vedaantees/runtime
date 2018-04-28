@@ -6,8 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vedaantees.Shells.Windows.Configurations;
 using Vedaantees.Shells.Windows.FileSystems;
-using Vedaantees.Shells.Windows.Messages;
-using Vedaantees.Shells.Windows.Messaging;
 
 namespace Vedaantees.Shells.Windows
 {
@@ -54,12 +52,10 @@ namespace Vedaantees.Shells.Windows
 
         public void StopServers()
         {
-            MessagingEngine.SendMessage(new AppBusyStart());
             Kill("dotnet");
-            MessagingEngine.SendMessage(new AppBusyEnd());
         }
 
-        public void Kill(string name)
+        private void Kill(string name)
         {
             var process = Process.GetProcessesByName(name);
             foreach (var p in process)
@@ -68,8 +64,6 @@ namespace Vedaantees.Shells.Windows
 
         public async void LoadFileMonitor()
         {
-            MessagingEngine.SendMessage(new AppBusyStart());
-
             await Task.Run(() => new ShellConfiguration
                                         {
                                             ModulesFolder = ConfigurationManager.AppSettings.Get("modules-folder"),
@@ -86,8 +80,6 @@ namespace Vedaantees.Shells.Windows
                                             directoryMonitor.Start();
                                         })
                                         .ContinueWith(result => StartOrRestartServer());
-
-            MessagingEngine.SendMessage(new AppBusyEnd());
         }
     }
 }

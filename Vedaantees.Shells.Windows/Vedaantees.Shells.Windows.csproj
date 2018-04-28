@@ -56,10 +56,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalSettingsEditor.cs">
+    <Compile Include="Editors\GlobalSettingsEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GlobalSettingsEditor.Designer.cs">
+    <Compile Include="Editors\GlobalSettingsEditor.Designer.cs">
       <DependentUpon>GlobalSettingsEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
@@ -69,15 +69,16 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormService.cs" />
-    <Compile Include="MdiClientExtensions.cs" />
+    <Compile Include="Extensions\MdiClientExtensions.cs" />
     <Compile Include="Messages\AppBusyEnd.cs" />
     <Compile Include="Messages\AppBusyStart.cs" />
-    <Compile Include="MonitorFileSystem.cs" />
+    <Compile Include="FileSystems\MonitorFileSystem.cs" />
+    <Compile Include="Messaging\ISubscriber.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Messaging\MessagingEngine.cs" />
-    <Compile Include="ShellConfiguration.cs" />
-    <EmbeddedResource Include="GlobalSettingsEditor.resx">
+    <Compile Include="Configurations\ShellConfiguration.cs" />
+    <EmbeddedResource Include="Editors\GlobalSettingsEditor.resx">
       <DependentUpon>GlobalSettingsEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">

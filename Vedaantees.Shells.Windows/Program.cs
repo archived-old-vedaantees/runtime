@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Vedaantees.Framework.Utilities;
 using Vedaantees.Shells.Windows.Messaging;
 
 namespace Vedaantees.Shells.Windows
