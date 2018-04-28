@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Vedaantees.Framework.Utilities;
+using Vedaantees.Shells.Windows.Messaging;
 
 namespace Vedaantees.Shells.Windows
 {
@@ -8,6 +10,7 @@ namespace Vedaantees.Shells.Windows
         [STAThread]
         static void Main()
         {
+            MessagingEngine.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());

@@ -6,15 +6,21 @@ namespace Vedaantees.Shells.Windows
 {
     public class MonitorFileSystem
     {
+        private readonly string _fileName;
         private readonly Action _action;
         private DateTime _lastWriteTime = DateTime.Now;
         
         public MonitorFileSystem(string fileName, Action action)
         {
-            var fileWatcher = new FileSystemWatcher(fileName);
+            _fileName = fileName;
+            _action = action;
+        }
+
+        public void Start()
+        {
+            var fileWatcher = new FileSystemWatcher(_fileName);
             fileWatcher.Changed += File_Changed;
             fileWatcher.EnableRaisingEvents = true;
-            _action = action;
         }
 
         public void File_Changed(object sender, FileSystemEventArgs e)

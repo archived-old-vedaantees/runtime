@@ -29,67 +29,87 @@
         private void InitializeComponent()
         {
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restartToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.killToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.BtnHost = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnRestart = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnKill = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.globalSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatusStrip = new System.Windows.Forms.StatusStrip();
             this.TaskProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.MainMenu.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.StatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenu
             // 
-            this.MainMenu.BackColor = System.Drawing.Color.FloralWhite;
+            this.MainMenu.BackColor = System.Drawing.Color.Gainsboro;
             this.MainMenu.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restartToolStripMenuItem,
-            this.btnClose});
+            this.BtnHost,
+            this.editToolStripMenuItem,
+            this.BtnClose});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.MainMenu.Size = new System.Drawing.Size(793, 26);
+            this.MainMenu.Size = new System.Drawing.Size(897, 26);
             this.MainMenu.TabIndex = 0;
             // 
-            // restartToolStripMenuItem
+            // BtnHost
             // 
-            this.restartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restartToolStripMenuItem1,
-            this.killToolStripMenuItem});
-            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.restartToolStripMenuItem.Text = "Hosts";
+            this.BtnHost.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BtnRestart,
+            this.BtnKill});
+            this.BtnHost.Name = "BtnHost";
+            this.BtnHost.Size = new System.Drawing.Size(57, 20);
+            this.BtnHost.Text = "Hosts";
             // 
-            // restartToolStripMenuItem1
+            // BtnRestart
             // 
-            this.restartToolStripMenuItem1.Name = "restartToolStripMenuItem1";
-            this.restartToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
-            this.restartToolStripMenuItem1.Text = "Restart";
+            this.BtnRestart.Name = "BtnRestart";
+            this.BtnRestart.Size = new System.Drawing.Size(180, 22);
+            this.BtnRestart.Text = "Restart";
+            this.BtnRestart.Click += new System.EventHandler(this.BtnRestart_Click);
             // 
-            // killToolStripMenuItem
+            // BtnKill
             // 
-            this.killToolStripMenuItem.Name = "killToolStripMenuItem";
-            this.killToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.killToolStripMenuItem.Text = "Kill";
+            this.BtnKill.Name = "BtnKill";
+            this.BtnKill.Size = new System.Drawing.Size(180, 22);
+            this.BtnKill.Text = "Kill";
+            this.BtnKill.Click += new System.EventHandler(this.BtnKill_Click);
             // 
-            // btnClose
+            // editToolStripMenuItem
             // 
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(55, 20);
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.globalSettingsToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
-            // statusStrip1
+            // globalSettingsToolStripMenuItem
             // 
-            this.statusStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.globalSettingsToolStripMenuItem.Name = "globalSettingsToolStripMenuItem";
+            this.globalSettingsToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.globalSettingsToolStripMenuItem.Text = "Global Settings";
+            this.globalSettingsToolStripMenuItem.Click += new System.EventHandler(this.GlobalSettingsToolStripMenuItem_Click);
+            // 
+            // BtnClose
+            // 
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(55, 20);
+            this.BtnClose.Text = "Close";
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // StatusStrip
+            // 
+            this.StatusStrip.BackColor = System.Drawing.Color.Gainsboro;
+            this.StatusStrip.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TaskProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 605);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(793, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.StatusStrip.Location = new System.Drawing.Point(0, 509);
+            this.StatusStrip.Name = "StatusStrip";
+            this.StatusStrip.Size = new System.Drawing.Size(897, 22);
+            this.StatusStrip.TabIndex = 1;
             // 
             // TaskProgress
             // 
@@ -101,19 +121,21 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(793, 627);
-            this.Controls.Add(this.statusStrip1);
+            this.ClientSize = new System.Drawing.Size(897, 531);
+            this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.MainMenu;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Main";
             this.Text = "Vedaantees - Host Control Center";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Main_Load);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.StatusStrip.ResumeLayout(false);
+            this.StatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,11 +144,13 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip MainMenu;
-        private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem killToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem btnClose;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem BtnHost;
+        private System.Windows.Forms.ToolStripMenuItem BtnRestart;
+        private System.Windows.Forms.ToolStripMenuItem BtnKill;
+        private System.Windows.Forms.ToolStripMenuItem BtnClose;
+        private System.Windows.Forms.StatusStrip StatusStrip;
         private System.Windows.Forms.ToolStripProgressBar TaskProgress;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem globalSettingsToolStripMenuItem;
     }
 }
