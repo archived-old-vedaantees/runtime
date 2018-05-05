@@ -52,7 +52,7 @@
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.MainMenu.Size = new System.Drawing.Size(897, 26);
+            this.MainMenu.Size = new System.Drawing.Size(809, 26);
             this.MainMenu.TabIndex = 0;
             // 
             // BtnHost
@@ -106,9 +106,9 @@
             this.StatusStrip.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TaskProgress});
-            this.StatusStrip.Location = new System.Drawing.Point(0, 509);
+            this.StatusStrip.Location = new System.Drawing.Point(0, 540);
             this.StatusStrip.Name = "StatusStrip";
-            this.StatusStrip.Size = new System.Drawing.Size(897, 22);
+            this.StatusStrip.Size = new System.Drawing.Size(809, 22);
             this.StatusStrip.TabIndex = 1;
             // 
             // TaskProgress
@@ -121,7 +121,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(897, 531);
+            this.ClientSize = new System.Drawing.Size(809, 562);
             this.Controls.Add(this.StatusStrip);
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

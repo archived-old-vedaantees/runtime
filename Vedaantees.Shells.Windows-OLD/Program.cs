@@ -12,7 +12,7 @@ namespace Vedaantees.Shells.Windows
             MessagingEngine.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new NewForm());
         }
     }
 }

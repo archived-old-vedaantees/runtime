@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Hosts.SingleSignOn", "Vedaantees.Hosts.SingleSignOn\Vedaantees.Hosts.SingleSignOn.csproj", "{39F9D36B-DF51-4C32-B30B-8232B095076D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vedaantees.Hosts.SingleSignOn", "Vedaantees.Hosts.SingleSignOn\Vedaantees.Hosts.SingleSignOn.csproj", "{39F9D36B-DF51-4C32-B30B-8232B095076D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Hosts.Api", "Vedaantees.Hosts.Api\Vedaantees.Hosts.Api.csproj", "{2A911769-6AF5-4F77-BD1E-E7BF17656BBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vedaantees.Hosts.Api", "Vedaantees.Hosts.Api\Vedaantees.Hosts.Api.csproj", "{2A911769-6AF5-4F77-BD1E-E7BF17656BBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Hosts.ServiceBus", "Vedaantees.Hosts.ServiceBus\Vedaantees.Hosts.ServiceBus.csproj", "{8CBD9420-6276-41EC-B807-D5047206340D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vedaantees.Hosts.ServiceBus", "Vedaantees.Hosts.ServiceBus\Vedaantees.Hosts.ServiceBus.csproj", "{8CBD9420-6276-41EC-B807-D5047206340D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Hosts.Tasks", "Vedaantees.Hosts.Tasks\Vedaantees.Hosts.Tasks.csproj", "{F4ADEE8B-A26D-45C0-A891-4DF730CB8431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vedaantees.Hosts.Tasks", "Vedaantees.Hosts.Tasks\Vedaantees.Hosts.Tasks.csproj", "{F4ADEE8B-A26D-45C0-A891-4DF730CB8431}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Hosts", "01-Hosts", "{C2A1A10D-961F-4E31-AA91-AF722E4E4020}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Shells", "02-Shells", "{24E67D10-AD9D-4BCA-8669-78B6024B60E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Shells.Windows", "Vedaantees.Shells.Windows\Vedaantees.Shells.Windows.csproj", "{ABFC6445-D979-4D4F-AB13-8E1743C49FD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vedaantees.Shell.Windows", "Vedaantees.Shell.Windows\Vedaantees.Shell.Windows.csproj", "{947BEEA7-6AFC-4E66-B5D1-F08170F94A48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,10 @@ Global
 		{F4ADEE8B-A26D-45C0-A891-4DF730CB8431}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4ADEE8B-A26D-45C0-A891-4DF730CB8431}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4ADEE8B-A26D-45C0-A891-4DF730CB8431}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABFC6445-D979-4D4F-AB13-8E1743C49FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABFC6445-D979-4D4F-AB13-8E1743C49FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABFC6445-D979-4D4F-AB13-8E1743C49FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABFC6445-D979-4D4F-AB13-8E1743C49FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947BEEA7-6AFC-4E66-B5D1-F08170F94A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947BEEA7-6AFC-4E66-B5D1-F08170F94A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947BEEA7-6AFC-4E66-B5D1-F08170F94A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947BEEA7-6AFC-4E66-B5D1-F08170F94A48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,7 +52,7 @@ Global
 		{2A911769-6AF5-4F77-BD1E-E7BF17656BBF} = {C2A1A10D-961F-4E31-AA91-AF722E4E4020}
 		{8CBD9420-6276-41EC-B807-D5047206340D} = {C2A1A10D-961F-4E31-AA91-AF722E4E4020}
 		{F4ADEE8B-A26D-45C0-A891-4DF730CB8431} = {C2A1A10D-961F-4E31-AA91-AF722E4E4020}
-		{ABFC6445-D979-4D4F-AB13-8E1743C49FD1} = {24E67D10-AD9D-4BCA-8669-78B6024B60E2}
+		{947BEEA7-6AFC-4E66-B5D1-F08170F94A48} = {24E67D10-AD9D-4BCA-8669-78B6024B60E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1676CAAD-6445-4E39-8D63-10E397A5805F}
